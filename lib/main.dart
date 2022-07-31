@@ -2,7 +2,25 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var st = 0;
+  var question = [
+    'what\'s your name',
+    ' which animal do you love',
+    'how you doing'
+  ];
+  void buttonpressed() {
+    setState(() {
+      st = st + 1;
+    });
+    print(st);
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -12,17 +30,10 @@ class MyApp extends StatelessWidget {
           title: Text('hello'),
         ),
         body: Column(children: [
-          Text('question ? '),
-          Row(children: [
-            RaisedButton( child: Text('ANSWER1'), onPressed: null),
-          RaisedButton( child: Text('ANSWER2'), onPressed: null),
-          RaisedButton( child: Text('ANSWER3'), onPressed: null),
-          ],),
-          RaisedButton( child: Text('answer1'), onPressed: null),
-          RaisedButton( child: Text('answer2'), onPressed: null),
-          RaisedButton( child: Text('answer3'), onPressed: null),
-        
-
+          Text(question[st]),
+          ElevatedButton(child: Text('answer1'), onPressed: buttonpressed),
+          ElevatedButton(child: Text('answer2'), onPressed: buttonpressed),
+          ElevatedButton(child: Text('answer3'), onPressed: buttonpressed),
         ]),
       ),
     );
